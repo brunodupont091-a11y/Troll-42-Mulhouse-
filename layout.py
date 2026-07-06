@@ -58,6 +58,6 @@ try:
         layout = random.choice(layouts)
         subprocess.run(["setxkbmap", layout])
         print(f"Keyboard layout changed to: {layout}")
-        time.sleep(60)
-except KeyboardInterrupt:
+        time.sleep(10)
+except (KeyboardInterrupt, SystemExit):
     subprocess.run(["setxkbmap", "us"])
