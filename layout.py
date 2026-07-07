@@ -54,10 +54,14 @@ layouts = [
 ]
 
 try:
+    x = 0
     while True:
         layout = random.choice(layouts)
         subprocess.run(["setxkbmap", layout])
-        print(f"Keyboard layout changed to: {layout}")
         time.sleep(10)
-except (KeyboardInterrupt, SystemExit):
+        x += 1
+        if x >= 30:
+            subprocess.run(["setxkbmap", "us"])
+            exit(0)
+except (KeyboardInterrupt, SystemExit, Exception):
     subprocess.run(["setxkbmap", "us"])
